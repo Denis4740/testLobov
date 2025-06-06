@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Салон</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        
+        <div class="logo"> Салон</P></div>
+        <div class="logo"> +7 (999) 999-99-99</P></div>
+        <H1 align="center">Основы javascript</H1> 
+    </body>
+    </header>
+    <body>
+     <style>
+      body{
+       background-color: #666;
+      }
+      </style>
+      <body>
+        <img src="C:\Users\user01\Desktop\Новая папка\ab82110aa318e627c3d8ca16ee4ac0de.jpg" width="100%" height="400" >
+       </body>
+       <H1 align="center">Хотите первыми узнать о скидках и акциях?</H1> 
+       <body>
+        <form>
+            <input type="text" id="textInput" name="textInput" placeholder="E-mail">
+         </form>
+        <div class="content">
+            <button class="button">Подписаться</button>
+            <script>
+            const buttonEl = document.querySelector('.button');
+            buttonEl.onclick = function() {
+            buttonEl.textContent = 'Подписан'
+            }
+            </script>
+            <H1 align="center">Нажми на кнопку больше всех чтобы получить приз</H1> 
+            <div class="content"></div>
+            
+             <script>
+          const button = document.createElement('button');
+  button.textContent = 'Нажми меня';
+  const clickCountDisplay = document.createElement('span');
+  clickCountDisplay.textContent = 'Количество нажатий: 0';
+  let clickCount = 0;
+  button.addEventListener('click', function() {
+    clickCount++;
+    clickCountDisplay.textContent = `Количество нажатий: ${clickCount}`;
+  });
+  const contentDiv = document.querySelector('.content');
+  contentDiv.appendChild(button);
+  contentDiv.appendChild(clickCountDisplay);
+        </script>
+        <H1 align="center">Калькулятор</H1> 
+        <div>
+       <button onclick="showCalc()">Калькулятор</button>
+       </div>
+       <div id="content" class="content">
+       <script>
+        function showCalc() {
+ const content = document.getElementById('content');
+ content.innerHTML = `
+     <h2>Калькулятор</h2>
+     <input type="number" id="num1" placeholder="Первое число" />
+     <input type="number" id="num2" placeholder="Второе число" />
+     <br><br>
+     <button onclick="calc()">Сложить</button>
+     <p id="result"></p>
+ `;
+}
+
+function calc() {
+ const num1 = parseFloat(document.getElementById('num1').value);
+ const num2 = parseFloat(document.getElementById('num2').value);
+ const result = document.getElementById('result');
+
+ if (isNaN(num1) || isNaN(num2)) {
+     result.innerHTML = 'Введите оба числа.';
+ } else {
+     result.innerHTML = 'Результат: ' + (num1 + num2);
+ }
+}
+</script>
