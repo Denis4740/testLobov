@@ -21,3 +21,32 @@ function calc() {
      result.innerHTML = 'Результат: ' + (num1 + num2);
  }
 }
+function changeTitle() {
+    document.querySelector("h1").innerText="Функции Jawa";
+}
+function checkDrink() {
+    const tea = document.getElementById('tea');
+    const coffee = document.getElementById('coffee');
+    const messege = document.getElementById('messege');
+    if (tea.checked) {
+        messege.textContent = "мотор v2 закончился";
+    }
+    else if (coffee.checked) {
+        messege.textContent = "мотор v8 закончился";
+    }
+            else messege.checked = "Пожалуйста выберите мотор";
+        }
+    
+        function validateForm() {
+            const checkbox = document.getElementById('agreement');
+            const errorMessage = document.getElementById('error-message');
+        
+            if (!checkbox.checked) {
+              errorMessage.style.display = 'block';
+              return false; 
+            } else {
+              errorMessage.style.display = 'none';
+              alert('Форма успешно отправлена!');
+              return true;
+            }
+          }

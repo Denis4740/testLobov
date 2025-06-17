@@ -36,6 +36,7 @@
             buttonEl.onclick = function() {
             buttonEl.textContent = 'Подписан'
             }
+            
             </script>
             <H1 align="center">Нажми на кнопку больше всех чтобы получить приз</H1> 
             <div class="content"></div>
@@ -84,3 +85,31 @@ function calc() {
  }
 }
 </script>
+<body>
+    <button onclick="changeTitle()">Изменить заголовок</button> 
+    </body>
+    <body>
+       <form id="drink-form">
+        <div>
+            <input type="radio" id="tea" name="drink" value="tea">
+            <label for="tea">мотор v12</label>
+            </div>
+            <div>
+                <input type="radio" id="coffee" name="drink" value="coffee">
+                <label for="tea">мотор v8</label>
+                </div>
+                <br>
+                <button type="button" onclick="checkDrink()">отправить</button>
+                <div id="messege"></div>
+                </form>
+                </body>
+                <body>
+                    <form id="myForm" onsubmit="return validateForm()">
+                        <label>
+                          <input type="checkbox" id="agreement" />
+                          Согласен с условиями
+                        </label>
+                        <br><br>
+                        <button type="submit">Отправить</button>
+                        <div id="error-message">Необходимо согласиться с условиями</div>
+                      </form>
