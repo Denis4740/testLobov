@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Расписание занятий</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light">
+
+    <div class="container my-5">
+        <h1 class="mb-4 text-center">Расписание занятий</h1>
+        <div id="classes" class="row g-3"></div>
+    </div>
+
+    <script>
+        const classesData = [{
+            id: 1,
+            name: "обж",
+            time: "Пн 18:00-19:00",
+            maxParticipants: 10,
+            currentParticipants: 3
+        }, {
+            id: 2,
+            name: "русский",
+            time: "Ср 19:30-20:30",
+            maxParticipants: 15,
+            currentParticipants: 15
+        }, {
+            id: 3,
+            name: "англ яз",
+            time: "Пт 16:00-18:00",
+            maxParticipants: 20,
+            currentParticipants: 5
+        }];
+
+
+        const userRegistrations = new Set();
+
+        const container = document.getElementById('classes');
+
+        function renderClasses() {
+            container.innerHTML = '';
+
+            classesData.forEach(cls => {
+                const isRegistered = userRegistrations.has(cls.id);
+                const isFull = cls.currentParticipants >= cls.maxParticipants;
+
+                const col = document.createElement('div');
+                col.className = 'col-12 col-md-6 col-lg-4';
+
+                col.innerHTML = `
+          <div class="card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">${cls.name}</h5>
+              <p class="card-text mb-1"><b>Время:</b> ${cls.time}</p>
+              <p class="card-text mb-3"><b>Участники:</b> ${cls.currentParticipants} / ${cls.maxParticipants}</p>
+              <div class="mt-auto">
+                <button class="btn btn-success w-100 mb-2 signup-btn" ${isRegistered || isFull ? 'disabled' : ''}>Записаться</button>
+                <button class="btn btn-danger w-100 cancel-btn" style="display: ${isRegistered ? 'block' : 'none'};">Отменить запись</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+
+                const signUpBtn = col.querySelector('.signup-btn');
+                signUpBtn.addEventListener('click', () => {
+                    if (!isRegistered && cls.currentParticipants < cls.maxParticipants) {
+                        cls.currentParticipants++;
+                        userRegistrations.add(cls.id);
+                        renderClasses();
+                    }
+                });
+
+
+                const cancelBtn = col.querySelector('.cancel-btn');
+                cancelBtn.addEventListener('click', () => {
+                    if (isRegistered) {
+                        cls.currentParticipants--;
+                        userRegistrations.delete(cls.id);
+                        renderClasses();
+                    }
+                });
+
+                container.appendChild(col);
+            });
+        }
+
+        renderClasses();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
